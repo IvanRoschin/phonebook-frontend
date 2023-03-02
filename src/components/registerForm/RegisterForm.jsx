@@ -1,18 +1,18 @@
+import { useSignupMutation } from 'redux/auth/authSlice_query';
 import { AuthForm } from 'components/authForm';
-import { useRegisterUserMutation } from 'redux/auth/authSlice';
+import { Link } from 'react-router-dom';
 
 export const RegisterForm = () => {
-  const [registerUser] = useRegisterUserMutation();
+  const [signup] = useSignupMutation();
 
   const handleRegister = async values => {
-    try {
-      await registerUser(values);
-      //   toast.success(`${values.name} is added to Phonebook.`);
-    } catch (error) {
-      console.log(error.message);
-      //   toast.error('error');
-    }
+    signup(values);
   };
 
-  return <AuthForm onSubmit={handleRegister} btnText={'Signup'} />;
+  return (
+    <>
+      <AuthForm onSubmit={handleRegister} btnText={'Signup'} />
+      <Link to="/login">Allready have account? | Login</Link>
+    </>
+  );
 };

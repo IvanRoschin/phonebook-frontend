@@ -1,16 +1,20 @@
 import { AppWrapper, AppTitle } from './AppBar.styled';
 import { AuthNav } from '../authNav';
 import { UserMenu } from '../userMenu';
-// import { useAuth } from 'hooks/useAuth';
+import { useLoginRedirect } from 'hooks';
 
 export const AppBar = () => {
-  //   const { isLoggedIn } = useAuth();
+  const string = useLoginRedirect();
+  console.log(string);
   return (
     <>
       <AppWrapper>
-        <AppTitle>Phonebook</AppTitle>
+        <AppTitle>
+          <a href="/Phonebook-frontend-new">Phonebook</a>
+        </AppTitle>
         <>
           <UserMenu />
+          {/* {isLoggedIn && <UserMenu />} */}
           <AuthNav />
         </>
       </AppWrapper>

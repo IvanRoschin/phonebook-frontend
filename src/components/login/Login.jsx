@@ -21,7 +21,6 @@ export const Login = () => {
   const dispatch = useDispatch();
 
   const handleLogin = async ({ email, password }) => {
-    console.log('click login');
     console.log({ email, password });
     if (email && password) {
       await login({ email, password });

@@ -22,7 +22,8 @@ const initialState = {
 
 export const AuthPage = () => {
   const [formValue, setFormValue] = useState(initialState);
-  const { name, email, password, confirmPassword, subscription } = formValue;
+
+  const { name, email, password, confirmPassword, subscripion } = formValue;
 
   const [showRegister, setShowRegister] = useState(false);
   const dispatch = useDispatch();
@@ -56,11 +57,12 @@ export const AuthPage = () => {
   };
 
   const handleSignup = async () => {
+    console.log('name', name);
     if (password !== confirmPassword) {
       return toast.error(`Passwords don't match`);
     }
     if (name && email && password) {
-      await signup({ name, email, password, subscription });
+      await signup({ name, email, password, subscripion });
     } else {
       toast.error('Please fill all Input');
     }
@@ -160,7 +162,7 @@ export const AuthPage = () => {
                     />
                   </div>
                   {showRegister && (
-                    <div>
+                    <>
                       <div className="form-outline form-blue mb-4">
                         <MDBInput
                           type="password"
@@ -174,13 +176,12 @@ export const AuthPage = () => {
                       </div>
                       <FormControl>
                         <FormLabel id="demo-row-radio-buttons-group-label">
-                          Choose your account type
+                          Choose your type
                         </FormLabel>
                         <RadioGroup
                           row
                           aria-labelledby="demo-row-radio-buttons-group-label"
                           name="row-radio-buttons-group"
-                          defaultValue="starter"
                           onChange={handleChange}
                         >
                           <FormControlLabel
@@ -196,14 +197,48 @@ export const AuthPage = () => {
                             label="Starter"
                           />
                           <FormControlLabel
-                            value="business"
+                            value="bussiness"
                             name="subscription"
                             control={<Radio />}
-                            label="Business"
+                            label="Bussiness"
                           />
                         </RadioGroup>
                       </FormControl>
-                    </div>
+                      {/* <h2>Choose your subscription type</h2>
+                      <div className="mb-4">
+                        <label htmlFor="pro">
+                          <input
+                            type="radio"
+                            name="subscription"
+                            id="pro"
+                            value="pro"
+                            onChange={onChange}
+                          />
+                          Pro
+                        </label>
+                        <label htmlFor="starter">
+                          <input
+                            type="radio"
+                            name="subscription"
+                            id="starter"
+                            value="starter"
+                            checked={true}
+                            onChange={onChange}
+                          />
+                          start
+                        </label>
+                        <label htmlFor="bussines">
+                          <input
+                            type="radio"
+                            name="subscription"
+                            id="bussines"
+                            value="bussines"
+                            onChange={onChange}
+                          />
+                          bussines
+                        </label>
+                      </div> */}
+                    </>
                   )}
                   {!showRegister ? (
                     <button

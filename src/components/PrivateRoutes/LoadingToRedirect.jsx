@@ -28,7 +28,6 @@ export const LoadingToRedirect = () => {
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>
-      Loadin
     </div>
   );
 };

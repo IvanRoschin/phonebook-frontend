@@ -4,8 +4,8 @@ export const AuthNav = () => {
   return (
     <>
       <Navigation>
-        <AppBarLink to="/">Signup</AppBarLink>
-        <AppBarLink to="/login">Login</AppBarLink>
+        <AppBarLink to="/register">Signup</AppBarLink>
+        <AppBarLink to="/">Login</AppBarLink>
       </Navigation>
     </>
   );

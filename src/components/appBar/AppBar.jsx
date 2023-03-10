@@ -1,11 +1,10 @@
 import { AppWrapper, AppTitle } from './AppBar.styled';
 import { AuthNav } from '../authNav';
 import { UserMenu } from '../userMenu';
-import { useLoginRedirect } from 'hooks';
+// import { useLoginRedirect } from 'hooks';
 
 export const AppBar = () => {
-  const string = useLoginRedirect();
-  console.log(string);
+  // const isLoggedIn = useLoginRedirect();
   return (
     <>
       <AppWrapper>

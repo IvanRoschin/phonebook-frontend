@@ -1,12 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+const HOST_NAME = 'http://localhost:8080/api/users';
+
 export const authApi = createApi({
   reducerPath: 'authApi',
+  tagTypes: ['user'],
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:8080/api',
-    tagTypes: ['user'],
+    baseUrl: HOST_NAME,
     prepareHeaders: (headers, { getState }) => {
-      const token = getState();
+      const token = getState().auth.token;
       console.log(token);
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
@@ -18,18 +20,19 @@ export const authApi = createApi({
     signup: builder.mutation({
       query(body) {
         return {
-          url: `users/signup`,
+          url: `signup`,
           method: 'POST',
           body,
         };
       },
+
       invalidatesTags: ['user'],
     }),
 
     login: builder.mutation({
       query(body) {
         return {
-          url: `users/login`,
+          url: `login`,
           method: 'POST',
           body,
         };
@@ -38,12 +41,12 @@ export const authApi = createApi({
     }),
 
     current: builder.query({
-      query: () => 'users/current',
+      query: () => 'current',
       providesTags: ['user'],
     }),
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const { useSignupMutation, useLoginMutation, useCurrentQuery } = authApi;
+
+export const authApiReducer = authApi.reducer;

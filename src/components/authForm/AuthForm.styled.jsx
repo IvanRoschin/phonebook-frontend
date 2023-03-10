@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 import { Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
+
+export const LinkRouter = styled(Link)`
+  text-decoration: grey underline;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  color: #1976d2;
+`;
 
 export const FormikForm = styled(Form)`
   display: flex;
@@ -18,9 +29,11 @@ export const FormLabel = styled.label`
 `;
 
 export const FormInput = styled(Field)`
-  width: 200px;
   margin-bottom: 20px;
   padding: 10px;
+  width: 90%,
+  marginLeft: auto,
+  marginRight: auto,
 `;
 
 export const FormBtn = styled.button`

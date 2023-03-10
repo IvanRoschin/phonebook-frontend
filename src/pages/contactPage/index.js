@@ -1,1 +1,1 @@
-export { ContactPage } from './ContactPage.jsx';
+export { ContactPage } from './ContactPage';

@@ -1,5 +1,11 @@
-import { RegisterForm } from 'components/registerForm';
+import { Login } from 'components/login/Login';
+import { UserSettings } from 'components/userSettings';
 
 export const WelcomePage = () => {
-  return <RegisterForm />;
+  UserSettings();
+  return (
+    <div>
+      <Login />
+    </div>
+  );
 };

@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import { authReducer } from './auth/authSlice';
-import { authApi } from './auth/authSlice_query';
+import { authReducer } from './auth/authSlice';
+import { authApi } from './auth/authApi';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import {
   persistStore,
   persistReducer,
@@ -16,13 +17,13 @@ import storage from 'redux-persist/lib/storage';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'name', 'avatar'],
 };
 
 export const store = configureStore({
   reducer: {
     [authApi.reducerPath]: persistReducer(authPersistConfig, authApi.reducer),
-    // auth: persistReducer(authPersistConfig, authReducer),
+    auth: persistReducer(authPersistConfig, authReducer),
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
@@ -32,5 +33,7 @@ export const store = configureStore({
     }).concat(authApi.middleware),
   ],
 });
+
+setupListeners(store.dispatch);
 
 export const persistor = persistStore(store);

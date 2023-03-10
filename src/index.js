@@ -8,6 +8,7 @@ import './index.css';
 import { store, persistor } from 'redux/store';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

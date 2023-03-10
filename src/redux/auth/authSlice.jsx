@@ -1,29 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, current } from './operations';
 
 export const AuthSlice = createSlice({
-  name: 'auth',
+  name: 'authSlice',
   initialState: {
-    user: { email: null },
+    name: null,
     token: null,
-    isLoggedIn: false,
-    isRefreshing: false,
+    avatar: null,
   },
-  extraReducers: builder => {
-    builder
-      .addCase(register.pending, state => state)
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload;
-      })
-      .addCase(register.rejected, state => state)
-      .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.token = action.payload;
-      })
-      .addCase(current.fulfilled, (state, action) => {
-        state.token = action.payload;
-      });
+  reducers: {
+    setUser: (state, action) => {
+      localStorage.setItem(
+        'user',
+        JSON.stringify({
+          name: action.payload.name,
+          token: action.payload.token,
+          avatar: action.payload.avatar,
+        })
+      );
+      state.name = action.payload.name;
+      state.token = action.payload.token;
+      state.avatar = action.payload.avatar;
+    },
+    logout: state => {
+      localStorage.clear();
+      state.name = null;
+      state.token = null;
+      state.avatar = null;
+    },
   },
 });
+
+export const selectAuth = state => state.auth;
+
+export const { setUser, logout } = AuthSlice.actions;
 
 export const authReducer = AuthSlice.reducer;

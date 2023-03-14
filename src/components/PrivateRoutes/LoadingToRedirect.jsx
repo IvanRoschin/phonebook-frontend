@@ -19,6 +19,12 @@ export const LoadingToRedirect = () => {
       <MDBModal show={true}>
         <MDBModalDialog centered>
           <MDBModalContent>
+            <h4
+              className="mt-3"
+              style={{ marginLeft: 'auto', marginRight: 'auto' }}
+            >
+              You need to login
+            </h4>
             <p
               className="mt-3"
               style={{ marginLeft: 'auto', marginRight: 'auto' }}

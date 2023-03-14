@@ -1,1 +1,2 @@
-export { useLoginRedirect } from './useLoginRedirect.jsx';
+export { useLoginRedirect } from './useLoginRedirect';
+export { useIsLoggedIn } from './useIsLoggedIn';

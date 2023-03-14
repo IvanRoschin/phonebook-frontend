@@ -1,22 +1,27 @@
-import { AppWrapper, AppTitle } from './AppBar.styled';
 import { AuthNav } from '../authNav';
 import { UserMenu } from '../userMenu';
-// import { useLoginRedirect } from 'hooks';
+import { useSelector } from 'react-redux';
+import { selectAuth } from 'redux/auth/authSlice';
+import { AppBar, IconButton, Toolbar, Typography, Box } from '@mui/material';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import { display } from '@mui/system';
+export const Header = () => {
+  const { token } = useSelector(selectAuth);
 
-export const AppBar = () => {
-  // const isLoggedIn = useLoginRedirect();
   return (
     <>
-      <AppWrapper>
-        <AppTitle>
-          <a href="/Phonebook-frontend-new">Phonebook</a>
-        </AppTitle>
-        <>
-          <UserMenu />
-          {/* {isLoggedIn && <UserMenu />} */}
-          <AuthNav />
-        </>
-      </AppWrapper>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton color="inherit">
+            <PhoneAndroidIcon />
+          </IconButton>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Phonebook
+          </Typography>
+
+          {token ? <UserMenu /> : <AuthNav />}
+        </Toolbar>
+      </AppBar>
     </>
   );
 };

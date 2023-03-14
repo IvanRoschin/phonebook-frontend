@@ -1,12 +1,5 @@
-import { Navigation, AppBarLink } from './AuthNav.styled';
+import Button from '@mui/material/Button';
 
 export const AuthNav = () => {
-  return (
-    <>
-      <Navigation>
-        <AppBarLink to="/register">Signup</AppBarLink>
-        <AppBarLink to="/">Login</AppBarLink>
-      </Navigation>
-    </>
-  );
+  return <Button variant="contained">Signup</Button>;
 };

@@ -2,8 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from 'redux/auth/authSlice';
 import { selectAuth } from 'redux/auth/authSlice';
-import { Container, UserMenuText } from './UserMenu.styled';
-import { Button } from './UserMenu.styled';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+
+// import { Container, UserMenuText } from './UserMenu.styled';
+// import { Button } from './UserMenu.styled';
 import { toast } from 'react-toastify';
 
 export const UserMenu = () => {
@@ -20,15 +23,12 @@ export const UserMenu = () => {
   }
 
   return (
-    <Container>
-      <UserMenuText>
-        <>
-          Welcome, {name} <img src={avatar} alt="1" />
-        </>
-      </UserMenuText>
-      <Button type="button" onClick={handleLogout}>
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(4, 2fr)' }}>
+      Wellcome
+      <img src={avatar} alt="avatar" /> {name}
+      <Button variant="contained" onClick={handleLogout}>
         Logout
       </Button>
-    </Container>
+    </Box>
   );
 };

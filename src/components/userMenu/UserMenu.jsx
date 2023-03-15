@@ -1,6 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import { useNavigate } from 'react-router-dom';
-import { logout } from 'redux/auth/authSlice';
+// import { logout } from 'redux/auth/authSlice';
+import { useLogoutQuery } from 'redux/auth/authApi';
 import { selectAuth } from 'redux/auth/authSlice';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -10,14 +13,20 @@ import Button from '@mui/material/Button';
 import { toast } from 'react-toastify';
 
 export const UserMenu = () => {
-  const dispatch = useDispatch();
+  const { logout } = useLogoutQuery();
+
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { name } = useSelector(selectAuth);
   const { avatar } = useSelector(selectAuth);
+  const { id } = useSelector(selectAuth);
+  console.log('id', id);
 
   function handleLogout() {
-    dispatch(logout());
+    // dispatch(logout());
+    logout(id);
+
     toast.success('Logout Successfully');
     navigate('/auth');
   }

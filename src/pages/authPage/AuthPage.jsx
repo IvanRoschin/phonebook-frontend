@@ -75,6 +75,7 @@ export const AuthPage = () => {
           token: loginData.token,
           avatar: loginData.user.avatarURL,
           subscription: loginData.user.subscription,
+          id: loginData.user.id,
         })
       );
       navigate('/contacts');

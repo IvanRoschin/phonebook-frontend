@@ -7,6 +7,7 @@ export const AuthSlice = createSlice({
     token: null,
     avatar: null,
     subscription: null,
+    id: null,
   },
   reducers: {
     setUser: (state, action) => {
@@ -17,12 +18,14 @@ export const AuthSlice = createSlice({
           token: action.payload.token,
           avatar: action.payload.avatar,
           subscription: action.payload,
+          id: action.id,
         })
       );
       state.name = action.payload.name;
       state.token = action.payload.token;
       state.avatar = action.payload.avatar;
       state.subscription = action.payload.subscription;
+      state.id = action.payload.id;
     },
     logout: state => {
       localStorage.clear();
@@ -30,6 +33,7 @@ export const AuthSlice = createSlice({
       state.token = null;
       state.avatar = null;
       state.subscription = null;
+      state.id = null;
     },
   },
 });

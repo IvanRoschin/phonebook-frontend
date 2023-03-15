@@ -15,13 +15,14 @@ export const ContactMenu = id => {
       isError: isDeleteError,
       isSuccess: isDeleteSucces,
       error: DeleteError,
-      isLoading: isDeleting,
+      // isLoading: isDeleting,
     },
   ] = useDeleteContactMutation();
 
   const handleDelete = async e => {
     e.preventDefault();
     if (id) {
+      console.log('id', id);
       await deleteContact(id);
     }
   };

@@ -2,9 +2,8 @@ import { AuthNav } from '../authNav';
 import { UserMenu } from '../userMenu';
 import { useSelector } from 'react-redux';
 import { selectAuth } from 'redux/auth/authSlice';
-import { AppBar, IconButton, Toolbar, Typography, Box } from '@mui/material';
+import { AppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
-import { display } from '@mui/system';
 export const Header = () => {
   const { token } = useSelector(selectAuth);
 

@@ -6,28 +6,26 @@ import { useCurrentQuery } from 'redux/auth/authApi';
 import Container from '@mui/material/Container';
 
 const PrivatRoute = lazy(() =>
-  import('../components/routes' /* webpackChunkName: "PrivatRoute" */)
+  import(
+    '../components/routes/PrivateRoute' /* webpackChunkName: "PrivatRoute" */
+  )
 );
 
 const PublickRoute = lazy(() =>
-  import('../components/routes' /* webpackChunkName: "PublickRoute" */)
+  import(
+    '../components/routes/PublicRoute' /* webpackChunkName: "PublickRoute" */
+  )
 );
 
 const AuthPage = lazy(() =>
   import('../pages/authPage/AuthPage' /* webpackChunkName: "AuthPage" */)
 );
 
-// const ContactPage = lazy(() => import('../pages/contactPage/ContactPage'));
-
-// const AuthPage = lazy(() =>
-//   import('../pages/authPage/AuthPage' /* webpackChunkName: "LoginPage" */)
-// );
-
-// const ContactPage = lazy(() =>
-//   import(
-//     '../pages/contactPage/ContactPage' /* webpackChunkName: "DashboardPage" */
-//   )
-// );
+const ContactPage = lazy(() =>
+  import(
+    '../pages/contactPage/ContactPage' /* webpackChunkName: "ContactPage" */
+  )
+);
 
 export const App = () => {
   const { token } = useAuth();
@@ -47,7 +45,11 @@ export const App = () => {
           />
           <Route
             path="/contacts"
-            element={<PrivatRoute>{/* <ContactPage /> */}</PrivatRoute>}
+            element={
+              <PrivatRoute>
+                <ContactPage />
+              </PrivatRoute>
+            }
           />
           <Route path="/" element={<Navigate to="/auth" />} />
           <Route path="*" element={<Navigate to="/" />} />

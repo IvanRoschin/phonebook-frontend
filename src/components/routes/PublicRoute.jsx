@@ -1,8 +1,8 @@
 import { LoadingToRedirect } from './LoadingToRedirect';
 import { useAuth } from 'hooks/useAuth';
 
-export const PublicRoute = ({ children }) => {
+export default function PublicRoute({ children }) {
   const { isLoggedIn } = useAuth();
 
   return <>{isLoggedIn ? <LoadingToRedirect /> : children}</>;
-};
+}

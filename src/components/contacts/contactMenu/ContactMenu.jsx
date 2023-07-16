@@ -6,23 +6,17 @@ import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { toast } from 'react-toastify';
 
-export const ContactMenu = id => {
+export const ContactMenu = ({ id }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const [
     deleteContact,
-    {
-      isError: isDeleteError,
-      isSuccess: isDeleteSucces,
-      error: DeleteError,
-      // isLoading: isDeleting,
-    },
+    { isError: isDeleteError, isSuccess: isDeleteSucces, error: DeleteError },
   ] = useDeleteContactMutation();
 
   const handleDelete = async e => {
     e.preventDefault();
     if (id) {
-      console.log('id', id);
       await deleteContact(id);
     }
   };
@@ -36,8 +30,8 @@ export const ContactMenu = id => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = e => {
+    setAnchorEl(e.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);

@@ -1,9 +1,10 @@
-// import { useCurrentQuery } from 'redux/auth/authApi';
+import { useCurrentQuery } from 'redux/auth/authApi';
 
 import { MDBModal, MDBModalDialog, MDBModalContent } from 'mdb-react-ui-kit';
 
 export const CurrentUser = () => {
-  // const { data: currentUser } = useCurrentQuery();
+  const { data: currentUser } = useCurrentQuery();
+  console.log('currentUser', currentUser);
 
   return (
     <div className="vh-100 gradient-custom">

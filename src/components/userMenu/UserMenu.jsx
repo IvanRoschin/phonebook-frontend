@@ -1,40 +1,39 @@
-// import { useDispatch, useSelector } from 'react-redux';
-import { useSelector } from 'react-redux';
-
 import { useNavigate } from 'react-router-dom';
-// import { logout } from 'redux/auth/authSlice';
-import { useLogoutQuery } from 'redux/auth/authApi';
-import { selectAuth } from 'redux/auth/authSlice';
+import { useLogoutMutation } from 'redux/auth/authApi';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 
-// import { Container, UserMenuText } from './UserMenu.styled';
-// import { Button } from './UserMenu.styled';
 import { toast } from 'react-toastify';
+import { useAuth } from 'hooks/useAuth';
 
 export const UserMenu = () => {
-  const { logout } = useLogoutQuery();
+  const [logout] = useLogoutMutation();
+  const { user } = useAuth();
 
-  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { name } = useSelector(selectAuth);
-  const { avatar } = useSelector(selectAuth);
-  const { id } = useSelector(selectAuth);
-  console.log('id', id);
+  const { name, avatarURL, id } = user;
 
-  function handleLogout() {
-    // dispatch(logout());
-    logout(id);
-
+  const handleLogout = async () => {
+    await logout(id);
     toast.success('Logout Successfully');
     navigate('/auth');
-  }
+  };
 
   return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(4, 2fr)' }}>
-      Wellcome
-      <img src={avatar} alt="avatar" /> {name}
+    <Box
+      sx={{
+        gridTemplateColumns: 'repeat(4, 2fr)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '20px',
+      }}
+    >
+      Wellcome,
+      <Avatar src={avatarURL} alt="avatar" />
+      {name}
       <Button variant="contained" onClick={handleLogout}>
         Logout
       </Button>

@@ -1,18 +1,18 @@
 import { Grid } from '@mui/material';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { useFetchContactsQuery } from 'redux/contacts/contactsApi';
+import { useGetFavoritesQuery } from 'redux/contacts/contactsApi';
 import { getFilter } from 'redux/contacts/filterSlice';
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../contactItem';
 import Box from '@mui/material/Box';
 
-export const ContactList = () => {
+export const FavoritesList = () => {
   const {
     data: contacts,
     isError: isFetchContactsError,
     error: isFectchContactError,
-  } = useFetchContactsQuery();
+  } = useGetFavoritesQuery();
 
   const filter = useSelector(getFilter);
 

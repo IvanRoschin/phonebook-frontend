@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const HOST_NAME = 'http://localhost:8080/api/contacts';
+const apiUrl = process.env.REACT_APP_API_URL;
+
+const HOST_NAME = `${apiUrl}/api/contacts`;
 
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',
@@ -9,7 +11,6 @@ export const contactsApi = createApi({
     baseUrl: HOST_NAME,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
-      console.log(token);
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }
@@ -22,6 +23,10 @@ export const contactsApi = createApi({
       providesTags: ['contacts'],
     }),
 
+    getFavorites: builder.query({
+      query: () => `/?favorite=true`,
+      providesTags: ['contacts'],
+    }),
     getContactById: builder.query({
       query: id => `/${id}`,
       providesTags: ['contacts'],
@@ -56,7 +61,6 @@ export const contactsApi = createApi({
     updateFavorite: builder.mutation({
       query(data) {
         const { _id, ...body } = data;
-        console.log(data);
         return {
           url: `/${_id}/favorite`,
           method: 'PATCH',
@@ -75,6 +79,7 @@ export const {
   useGetContactByIdQuery,
   useUpdateContactMutation,
   useUpdateFavoriteMutation,
+  useGetFavoritesQuery,
 } = contactsApi;
 
 export const contactsApiReducer = contactsApi.reducer;

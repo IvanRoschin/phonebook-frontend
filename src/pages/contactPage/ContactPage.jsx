@@ -1,32 +1,33 @@
-import { Container } from '@mui/system';
 import { Filter } from 'components/contacts/Filter';
 import { ContactList } from 'components/contacts/contactList';
-export const ContactPage = () => {
+import { BasicModal } from 'components/modal';
+import { Button } from 'components/userMenu/UserMenu.styled';
+import { Box } from '@mui/material';
+import { FavoritesList } from 'components/contacts/FavoritesContacts';
+// import { useLocation } from 'react-router-dom';
+
+const ContactPage = () => {
+  // const { pathname } = useLocation();
+
   return (
     <>
-      <Container sx={{ mt: '1rem' }}>
-        <Filter />
-        <ContactList />
-      </Container>
+      <Box sx={{ display: 'inline-flex' }}>
+        <BasicModal />
+        <Button
+          type="button"
+          width="160px"
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+        >
+          Get
+        </Button>
+      </Box>
 
-      <section className="vh-100 gradient-custom">
-        <div className="container py-4 h-100">
-          <div className="row d-flex justify-content-center aling-items-center h-100">
-            <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-              <div
-                className="card bg-dark text-blue"
-                style={{ borderRadius: '1rem' }}
-              >
-                <div className="card body p-4 text-center">
-                  <div className="mb-md5 mt-md-4 pb-5 ">
-                    <h2 className="fw-bold mb-2">Wellcome to Contacts</h2>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Filter />
+      <FavoritesList />
+      <ContactList />
     </>
   );
 };
+
+export default ContactPage;

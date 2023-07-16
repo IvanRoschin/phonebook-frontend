@@ -1,0 +1,1 @@
+export { RecentEmail } from './recentEmail';

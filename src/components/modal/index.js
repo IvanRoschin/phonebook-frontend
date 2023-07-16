@@ -1,0 +1,1 @@
+export { BasicModal } from './MuiModal';

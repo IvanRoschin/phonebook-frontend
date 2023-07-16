@@ -1,15 +1,16 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const HOST_NAME = 'http://localhost:8080/api/users';
+const apiUrl = process.env.REACT_APP_API_URL;
+
+const HOST_NAME = `${apiUrl}/api/users`;
 
 export const authApi = createApi({
   reducerPath: 'authApi',
-  tagTypes: ['user'],
+  tagTypes: ['auth'],
   baseQuery: fetchBaseQuery({
     baseUrl: HOST_NAME,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
-      console.log(token);
       if (token) {
         headers.set('authorization', `Bearer ${token}`);
       }
@@ -26,7 +27,7 @@ export const authApi = createApi({
         };
       },
 
-      invalidatesTags: ['user'],
+      invalidatesTags: ['auth'],
     }),
 
     login: builder.mutation({
@@ -37,16 +38,30 @@ export const authApi = createApi({
           body,
         };
       },
-      invalidatesTags: ['user'],
+      invalidatesTags: ['auth'],
     }),
 
-    logout: builder.query({
-      query: id => 'logout',
-      providesTags: ['user'],
+    logout: builder.mutation({
+      query: id => ({
+        url: `logout`,
+        method: 'POST',
+        body: id,
+      }),
+      invalidatesTags: ['auth'],
+    }),
+
+    current: builder.query({
+      query: () => `current`,
+      providesTags: ['auth'],
     }),
   }),
 });
 
-export const { useSignupMutation, useLoginMutation, useLogoutQuery } = authApi;
+export const {
+  useSignupMutation,
+  useLoginMutation,
+  useLogoutMutation,
+  useCurrentQuery,
+} = authApi;
 
 export const authApiReducer = authApi.reducer;

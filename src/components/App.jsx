@@ -1,27 +1,58 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { ContactPage, RegisterPage, AuthPage, CurrentUser } from 'pages';
-import { Layout } from './layout/Layout';
-import { PrivateRoute } from './privateRoutes';
+import { lazy, Suspense } from 'react';
+import { Loader } from './Loader';
+import { useAuth } from 'hooks/useAuth';
+import { useCurrentQuery } from 'redux/auth/authApi';
+import Container from '@mui/material/Container';
+
+const PrivatRoute = lazy(() =>
+  import('../components/routes' /* webpackChunkName: "PrivatRoute" */)
+);
+
+const PublickRoute = lazy(() =>
+  import('../components/routes' /* webpackChunkName: "PublickRoute" */)
+);
+
+const AuthPage = lazy(() =>
+  import('../pages/authPage/AuthPage' /* webpackChunkName: "AuthPage" */)
+);
+
+// const ContactPage = lazy(() => import('../pages/contactPage/ContactPage'));
+
+// const AuthPage = lazy(() =>
+//   import('../pages/authPage/AuthPage' /* webpackChunkName: "LoginPage" */)
+// );
+
+// const ContactPage = lazy(() =>
+//   import(
+//     '../pages/contactPage/ContactPage' /* webpackChunkName: "DashboardPage" */
+//   )
+// );
 
 export const App = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        {/* <Route index element={<WelcomePage />}></Route> */}
-        <Route path="/" element={<Navigate to="auth" replace />}></Route>
-        <Route path="/auth" element={<AuthPage />}></Route>
+  const { token } = useAuth();
+  useCurrentQuery(null, { skip: !token });
 
-        <Route path="/register" element={<RegisterPage />}></Route>
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute>
-              <ContactPage />
-            </PrivateRoute>
-          }
-        ></Route>
-        <Route path="/current" element={<CurrentUser />}></Route>
-      </Route>
-    </Routes>
+  return (
+    <Container width={{ xs: '320px', sm: '768px', md: '1280px' }}>
+      <Suspense fallback={<Loader color="#6e78e8" size="100px" />}>
+        <Routes>
+          <Route
+            path="/auth"
+            element={
+              <PublickRoute>
+                <AuthPage />
+              </PublickRoute>
+            }
+          />
+          <Route
+            path="/contacts"
+            element={<PrivatRoute>{/* <ContactPage /> */}</PrivatRoute>}
+          />
+          <Route path="/" element={<Navigate to="/auth" />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Suspense>
+    </Container>
   );
 };

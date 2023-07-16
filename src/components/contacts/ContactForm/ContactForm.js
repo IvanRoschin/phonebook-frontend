@@ -1,124 +1,94 @@
-import { useState } from 'react';
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
-import PropTypes from 'prop-types';
+import { useAddContactMutation } from 'redux/contacts/contactsApi';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
-const ContactForm = ({
-  name = '',
-  email = '',
-  phone = '',
-  onSubmit,
-  btnText,
-}) => {
-  const [contactName, setContactName] = useState(name);
-  const [contactPhone, setContactPhone] = useState(phone);
-  const [contactEmail, setContactEmail] = useState(email);
+export const ContactForm = ({ btnText }) => {
+  const [
+    addContact,
+    {
+      isSuccess: isAddContactSuccess,
+      isError: isAddContcatError,
+      error: AddContactError,
+    },
+  ] = useAddContactMutation();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.elements.name.value.trim();
-    const phone = form.elements.phone.value.trim();
-    const email = form.elements.email.value.trim();
+  const handleSubmit = async event => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
 
-    const contact = { name, phone, email };
-
-    onSubmit(contact);
-    setContactName('');
-    setContactPhone('');
-    setContactEmail('');
-
-    form.reset();
-  };
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-
-    switch (name) {
-      case 'name':
-        setContactName(value);
-        break;
-
-      case 'phone':
-        setContactPhone(value);
-        break;
-
-      case 'email':
-        setContactEmail(value);
-        break;
-
-      default:
-        return;
+    if (name && email && phone) {
+      try {
+        await addContact({ name, email, phone });
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      toast.error('Please fill all Input');
     }
   };
+
+  useEffect(() => {
+    if (isAddContactSuccess) {
+      toast.success('Contact added successfully');
+    }
+    if (isAddContcatError) {
+      toast.error(AddContactError?.data.message);
+    }
+  }, [AddContactError?.data.message, isAddContactSuccess, isAddContcatError]);
+
   return (
-    <Box
-      component="form"
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px',
-        maxWidth: '360px',
-        width: '100%',
-        p: '10px',
-      }}
-      autoComplete="off"
-      required={true}
-      error="true"
-      validate="true"
-      onSubmit={handleSubmit}
-    >
-      <TextField
-        label="Name"
-        name="name"
-        type="name"
-        size="small"
-        onChange={handleChange}
-        value={contactName}
-        sx={{ width: '100%' }}
-        required
-      />
-      <TextField
-        inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-        label="Phone"
-        name="phone"
-        type="phone"
-        size="small"
-        sx={{ width: '100%' }}
-        onChange={handleChange}
-        value={contactPhone}
-        required
-      />
+    <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+      <Grid container rowSpacing={1}>
+        <Grid item width={'100%'}>
+          <TextField
+            autoComplete="given-name"
+            name="name"
+            required
+            fullWidth
+            id="name"
+            label="Name"
+            autoFocus
+          />
+        </Grid>
+        <Grid item width={'100%'}>
+          <TextField
+            required
+            fullWidth
+            id="phone"
+            label="Phone"
+            name="phone"
+            autoComplete="phone"
+          />
+        </Grid>
+        <Grid item width={'100%'}>
+          <TextField
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+          />
+        </Grid>
 
-      <TextField
-        label="Email"
-        name="email"
-        type="email"
-        size="small"
-        sx={{ width: '100%' }}
-        onChange={handleChange}
-        value={contactEmail}
-        required
-      />
-
-      <Button
-        sx={{ width: '120px', mx: 'auto' }}
-        type="submit"
-        variant="outlined"
-        size="small"
-      >
-        {btnText}
-      </Button>
+        <Grid itemwidth={'100%'}>
+          <Button
+            type="submit"
+            width="50%"
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            {btnText}
+          </Button>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
-
-ContactForm.propTypes = {
-  name: PropTypes.string,
-  phone: PropTypes.string,
-  btnText: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-};
-
-export default ContactForm;

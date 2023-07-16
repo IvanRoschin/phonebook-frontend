@@ -1,5 +1,6 @@
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 
 export const AuthNav = () => {
-  return <Button variant="contained">Signup</Button>;
+  return <></>;
+  // return <Button variant="contained">Signup</Button>;
 };

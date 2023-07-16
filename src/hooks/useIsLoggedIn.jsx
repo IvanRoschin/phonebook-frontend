@@ -1,9 +1,8 @@
-import { useSelector } from 'react-redux';
-import { selectAuth } from 'redux/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './useAuth';
 
 export const useIsLoggedIn = () => {
-  const { token } = useSelector(selectAuth);
+  const { token } = useAuth();
   const navigate = useNavigate();
   if (token) {
     console.log('user is Logged In');

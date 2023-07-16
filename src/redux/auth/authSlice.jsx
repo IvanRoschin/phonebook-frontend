@@ -1,48 +1,50 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import { authApi } from './authApi';
 export const AuthSlice = createSlice({
-  name: 'authSlice',
+  name: 'auth',
   initialState: {
-    name: null,
+    user: {},
     token: null,
-    avatar: null,
-    subscription: null,
-    id: null,
+    email: null,
+    isLoggedIn: false,
   },
-  reducers: {
-    setUser: (state, action) => {
-      localStorage.setItem(
-        'user',
-        JSON.stringify({
-          name: action.payload.name,
-          token: action.payload.token,
-          avatar: action.payload.avatar,
-          subscription: action.payload,
-          id: action.id,
-        })
-      );
-      state.name = action.payload.name;
-      state.token = action.payload.token;
-      state.avatar = action.payload.avatar;
-      state.subscription = action.payload.subscription;
-      state.id = action.payload.id;
-    },
-    logout: state => {
-      localStorage.clear();
-      state.name = null;
-      state.token = null;
-      state.avatar = null;
-      state.subscription = null;
-      state.id = null;
-    },
+
+  extraReducers: builder => {
+    builder.addMatcher(
+      authApi.endpoints.signup.matchFulfilled,
+      (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.token;
+        state.isLoggedIn = false;
+      }
+    );
+    builder.addMatcher(
+      authApi.endpoints.login.matchFulfilled,
+      (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.token;
+        state.isLoggedIn = true;
+      }
+    );
+    builder.addMatcher(
+      authApi.endpoints.logout.matchFulfilled,
+      (state, { payload }) => {
+        state.user = {};
+        state.token = null;
+        state.isLoggedIn = false;
+      }
+    );
+    builder.addMatcher(
+      authApi.endpoints.current.matchFulfilled,
+      (state, { payload }) => {
+        state.user = payload.user;
+        state.isLoggedIn = true;
+      }
+    );
   },
 });
 
-// Selectors
-export const selectAuth = state => state.auth;
-
-// Actions
-export const { setUser, logout } = AuthSlice.actions;
+//Action
 
 // Reducer
 export const authReducer = AuthSlice.reducer;

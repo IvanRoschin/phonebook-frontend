@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 export const ContactMenu = ({ id }) => {
   const [openModal, setOpenModal] = useState(false);
-
+  console.log(openModal);
   const [
     deleteContact,
     { isError: isDeleteError, isSuccess: isDeleteSucces, error: DeleteError },

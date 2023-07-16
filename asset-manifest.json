@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/IvanRoschin/phonebook-frontend/static/css/main.999cbfdf.css",
+    "main.js": "/IvanRoschin/phonebook-frontend/static/js/main.ecd98402.js",
+    "PrivatRoute.js": "/IvanRoschin/phonebook-frontend/static/js/PrivatRoute.be7424d3.chunk.js",
+    "PublickRoute.js": "/IvanRoschin/phonebook-frontend/static/js/PublickRoute.26b0b472.chunk.js",
+    "AuthPage.js": "/IvanRoschin/phonebook-frontend/static/js/AuthPage.9eb0a6d8.chunk.js",
+    "ContactPage.js": "/IvanRoschin/phonebook-frontend/static/js/ContactPage.6a5033ba.chunk.js",
+    "static/js/803.c2f12a28.chunk.js": "/IvanRoschin/phonebook-frontend/static/js/803.c2f12a28.chunk.js",
+    "static/js/804.2d6fc9c1.chunk.js": "/IvanRoschin/phonebook-frontend/static/js/804.2d6fc9c1.chunk.js",
+    "static/js/303.997ef055.chunk.js": "/IvanRoschin/phonebook-frontend/static/js/303.997ef055.chunk.js",
+    "static/media/desktop.jpg": "/IvanRoschin/phonebook-frontend/static/media/desktop.77f23095a813fefd025b.jpg",
+    "index.html": "/IvanRoschin/phonebook-frontend/index.html",
+    "main.999cbfdf.css.map": "/IvanRoschin/phonebook-frontend/static/css/main.999cbfdf.css.map",
+    "main.ecd98402.js.map": "/IvanRoschin/phonebook-frontend/static/js/main.ecd98402.js.map",
+    "PrivatRoute.be7424d3.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/PrivatRoute.be7424d3.chunk.js.map",
+    "PublickRoute.26b0b472.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/PublickRoute.26b0b472.chunk.js.map",
+    "AuthPage.9eb0a6d8.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/AuthPage.9eb0a6d8.chunk.js.map",
+    "ContactPage.6a5033ba.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/ContactPage.6a5033ba.chunk.js.map",
+    "803.c2f12a28.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/803.c2f12a28.chunk.js.map",
+    "804.2d6fc9c1.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/804.2d6fc9c1.chunk.js.map",
+    "303.997ef055.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/303.997ef055.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.999cbfdf.css",
+    "static/js/main.ecd98402.js"
+  ]
+}

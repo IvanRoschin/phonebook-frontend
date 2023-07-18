@@ -12,7 +12,7 @@ export const ContactItem = ({ _id, name, phone, email, favorite }) => {
     try {
       await updateFavorite({ _id, favorite: String(!favorite) });
     } catch (err) {
-      console.error(err);
+      console.error(err.message);
     }
   };
 

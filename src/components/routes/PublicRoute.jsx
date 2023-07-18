@@ -1,8 +1,7 @@
-import { LoadingToRedirect } from './LoadingToRedirect';
 import { useAuth } from 'hooks/useAuth';
+import { Navigate } from 'react-router-dom';
 
 export default function PublicRoute({ children }) {
   const { isLoggedIn } = useAuth();
-
-  return <>{isLoggedIn ? <LoadingToRedirect /> : children}</>;
+  return <>{isLoggedIn ? <Navigate to="/home" /> : children}</>;
 }

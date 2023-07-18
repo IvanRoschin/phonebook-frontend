@@ -3,7 +3,6 @@ import { lazy, Suspense } from 'react';
 import { Loader } from './Loader';
 import { useAuth } from 'hooks/useAuth';
 import { useCurrentQuery } from 'redux/auth/authApi';
-import Container from '@mui/material/Container';
 
 const PrivatRoute = lazy(() =>
   import(
@@ -11,7 +10,7 @@ const PrivatRoute = lazy(() =>
   )
 );
 
-const PublickRoute = lazy(() =>
+const PublicRoute = lazy(() =>
   import(
     '../components/routes/PublicRoute' /* webpackChunkName: "PublickRoute" */
   )
@@ -21,9 +20,9 @@ const AuthPage = lazy(() =>
   import('../pages/authPage/AuthPage' /* webpackChunkName: "AuthPage" */)
 );
 
-const ContactPage = lazy(() =>
+const DashboardPage = lazy(() =>
   import(
-    '../pages/contactPage/ContactPage' /* webpackChunkName: "ContactPage" */
+    '../pages/DashboardPage/DashboardPage' /* webpackChunkName: "ContactPage" */
   )
 );
 
@@ -32,29 +31,44 @@ export const App = () => {
   useCurrentQuery(null, { skip: !token });
 
   return (
-    <Container width={{ xs: '320px', sm: '768px', md: '1280px' }}>
-      <Suspense fallback={<Loader color="#6e78e8" size="100px" />}>
-        <Routes>
-          <Route
-            path="/auth"
-            element={
-              <PublickRoute>
-                <AuthPage />
-              </PublickRoute>
-            }
-          />
-          <Route
-            path="/contacts"
-            element={
-              <PrivatRoute>
-                <ContactPage />
-              </PrivatRoute>
-            }
-          />
-          <Route path="/" element={<Navigate to="/auth" />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </Suspense>
-    </Container>
+    <Suspense fallback={<Loader color="#6e78e8" size="100px" />}>
+      <Routes>
+        <Route
+          path="/auth"
+          element={
+            <PublicRoute>
+              <AuthPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <PrivatRoute>
+              <DashboardPage />
+            </PrivatRoute>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <PrivatRoute>
+              <DashboardPage />
+            </PrivatRoute>
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <PrivatRoute>
+              <DashboardPage />
+            </PrivatRoute>
+          }
+        />
+
+        <Route path="/" element={<Navigate to="/auth" />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Suspense>
   );
 };

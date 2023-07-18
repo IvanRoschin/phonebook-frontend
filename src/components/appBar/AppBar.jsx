@@ -15,7 +15,7 @@ export const Header = () => {
             <PhoneAndroidIcon />
           </IconButton>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            Phonebook
+            Phone Book
           </Typography>
 
           {token ? <UserMenu /> : <AuthNav />}

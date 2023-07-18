@@ -1,12 +1,10 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { ContactForm } from 'components/contacts/ContactForm';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
-
+import { ContactEditor } from 'components/ContactEditor';
+import { useState } from 'react';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -20,20 +18,20 @@ const style = {
 };
 
 export function BasicModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
       <Button
-        type="submit"
+        type="button"
         width="160px"
         variant="contained"
         sx={{ mt: 3, mb: 2 }}
         onClick={handleOpen}
       >
-        Add
+        Add Contact
       </Button>
       <Modal
         open={open}
@@ -53,11 +51,7 @@ export function BasicModal() {
           >
             <CloseIcon />
           </IconButton>
-
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add New Contact
-          </Typography>
-          <ContactForm btnText={'Add Contact'} />
+          <ContactEditor />
         </Box>
       </Modal>
     </div>

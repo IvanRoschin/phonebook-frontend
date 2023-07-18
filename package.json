@@ -2,7 +2,7 @@
   "name": "phonebook-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/IvanRoschin/phonebook-frontend",
+  "homepage": "https://ivanroschin.github.io/phonebook-frontend/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",

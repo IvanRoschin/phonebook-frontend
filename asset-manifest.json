@@ -1,28 +1,30 @@
 {
   "files": {
-    "main.css": "/IvanRoschin/phonebook-frontend/static/css/main.999cbfdf.css",
-    "main.js": "/IvanRoschin/phonebook-frontend/static/js/main.ecd98402.js",
-    "PrivatRoute.js": "/IvanRoschin/phonebook-frontend/static/js/PrivatRoute.be7424d3.chunk.js",
-    "PublickRoute.js": "/IvanRoschin/phonebook-frontend/static/js/PublickRoute.26b0b472.chunk.js",
-    "AuthPage.js": "/IvanRoschin/phonebook-frontend/static/js/AuthPage.9eb0a6d8.chunk.js",
-    "ContactPage.js": "/IvanRoschin/phonebook-frontend/static/js/ContactPage.6a5033ba.chunk.js",
-    "static/js/803.c2f12a28.chunk.js": "/IvanRoschin/phonebook-frontend/static/js/803.c2f12a28.chunk.js",
-    "static/js/804.2d6fc9c1.chunk.js": "/IvanRoschin/phonebook-frontend/static/js/804.2d6fc9c1.chunk.js",
-    "static/js/303.997ef055.chunk.js": "/IvanRoschin/phonebook-frontend/static/js/303.997ef055.chunk.js",
-    "static/media/desktop.jpg": "/IvanRoschin/phonebook-frontend/static/media/desktop.77f23095a813fefd025b.jpg",
-    "index.html": "/IvanRoschin/phonebook-frontend/index.html",
-    "main.999cbfdf.css.map": "/IvanRoschin/phonebook-frontend/static/css/main.999cbfdf.css.map",
-    "main.ecd98402.js.map": "/IvanRoschin/phonebook-frontend/static/js/main.ecd98402.js.map",
-    "PrivatRoute.be7424d3.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/PrivatRoute.be7424d3.chunk.js.map",
-    "PublickRoute.26b0b472.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/PublickRoute.26b0b472.chunk.js.map",
-    "AuthPage.9eb0a6d8.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/AuthPage.9eb0a6d8.chunk.js.map",
-    "ContactPage.6a5033ba.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/ContactPage.6a5033ba.chunk.js.map",
-    "803.c2f12a28.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/803.c2f12a28.chunk.js.map",
-    "804.2d6fc9c1.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/804.2d6fc9c1.chunk.js.map",
-    "303.997ef055.chunk.js.map": "/IvanRoschin/phonebook-frontend/static/js/303.997ef055.chunk.js.map"
+    "main.css": "/phonebook-frontend/static/css/main.999cbfdf.css",
+    "main.js": "/phonebook-frontend/static/js/main.b71ae3c1.js",
+    "PrivatRoute.js": "/phonebook-frontend/static/js/PrivatRoute.2449eb56.chunk.js",
+    "PublickRoute.js": "/phonebook-frontend/static/js/PublickRoute.ed6d951e.chunk.js",
+    "AuthPage.js": "/phonebook-frontend/static/js/AuthPage.9eb0a6d8.chunk.js",
+    "ContactPage.js": "/phonebook-frontend/static/js/ContactPage.2d7d8791.chunk.js",
+    "static/js/72.e0448083.chunk.js": "/phonebook-frontend/static/js/72.e0448083.chunk.js",
+    "static/js/196.4d059778.chunk.js": "/phonebook-frontend/static/js/196.4d059778.chunk.js",
+    "static/js/804.2d6fc9c1.chunk.js": "/phonebook-frontend/static/js/804.2d6fc9c1.chunk.js",
+    "static/js/239.ad9b78bc.chunk.js": "/phonebook-frontend/static/js/239.ad9b78bc.chunk.js",
+    "static/media/desktop.jpg": "/phonebook-frontend/static/media/desktop.77f23095a813fefd025b.jpg",
+    "index.html": "/phonebook-frontend/index.html",
+    "main.999cbfdf.css.map": "/phonebook-frontend/static/css/main.999cbfdf.css.map",
+    "main.b71ae3c1.js.map": "/phonebook-frontend/static/js/main.b71ae3c1.js.map",
+    "PrivatRoute.2449eb56.chunk.js.map": "/phonebook-frontend/static/js/PrivatRoute.2449eb56.chunk.js.map",
+    "PublickRoute.ed6d951e.chunk.js.map": "/phonebook-frontend/static/js/PublickRoute.ed6d951e.chunk.js.map",
+    "AuthPage.9eb0a6d8.chunk.js.map": "/phonebook-frontend/static/js/AuthPage.9eb0a6d8.chunk.js.map",
+    "ContactPage.2d7d8791.chunk.js.map": "/phonebook-frontend/static/js/ContactPage.2d7d8791.chunk.js.map",
+    "72.e0448083.chunk.js.map": "/phonebook-frontend/static/js/72.e0448083.chunk.js.map",
+    "196.4d059778.chunk.js.map": "/phonebook-frontend/static/js/196.4d059778.chunk.js.map",
+    "804.2d6fc9c1.chunk.js.map": "/phonebook-frontend/static/js/804.2d6fc9c1.chunk.js.map",
+    "239.ad9b78bc.chunk.js.map": "/phonebook-frontend/static/js/239.ad9b78bc.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.999cbfdf.css",
-    "static/js/main.ecd98402.js"
+    "static/js/main.b71ae3c1.js"
   ]
 }
